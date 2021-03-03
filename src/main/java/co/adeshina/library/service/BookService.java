@@ -4,7 +4,7 @@ import co.adeshina.library.dto.BookDto;
 import java.util.List;
 import java.util.Optional;
 
-public interface LibraryService {
+public interface BookService {
 
     /**
      * Executes a search for all books by the given author.

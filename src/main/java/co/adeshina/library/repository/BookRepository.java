@@ -1,4 +1,4 @@
-package co.adeshina.library.dao;
+package co.adeshina.library.repository;
 
 import co.adeshina.library.model.Book;
 import java.util.List;

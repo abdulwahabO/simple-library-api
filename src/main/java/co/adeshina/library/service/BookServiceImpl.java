@@ -1,6 +1,6 @@
 package co.adeshina.library.service;
 
-import co.adeshina.library.dao.BookRepository;
+import co.adeshina.library.repository.BookRepository;
 import co.adeshina.library.dto.BookDto;
 import co.adeshina.library.model.Book;
 
@@ -14,13 +14,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LibraryServiceImpl implements LibraryService {
+public class BookServiceImpl implements BookService {
 
-    private Logger logger = LoggerFactory.getLogger(LibraryServiceImpl.class);
+    private Logger logger = LoggerFactory.getLogger(BookServiceImpl.class);
 
     private BookRepository bookRepository;
 
-    public LibraryServiceImpl(BookRepository bookRepository) {
+    public BookServiceImpl(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 

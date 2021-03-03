@@ -6,7 +6,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import co.adeshina.library.dao.BookRepository;
+import co.adeshina.library.repository.BookRepository;
 import co.adeshina.library.dto.BookDto;
 import co.adeshina.library.model.Book;
 
@@ -18,7 +18,7 @@ import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class LibraryServiceImplTest {
+public class BookServiceImplTest {
 
     private BookRepository bookRepository = mock(BookRepository.class);
     Book lentBook = mock(Book.class);
@@ -31,8 +31,8 @@ public class LibraryServiceImplTest {
 
     @Test
     public void shouldReturnAuthorBooks() {
-        LibraryService libraryService = new LibraryServiceImpl(bookRepository);
-        Optional<List<BookDto>> booksOptional = libraryService.findByAuthor("Mr. Shola");
+        BookService bookService = new BookServiceImpl(bookRepository);
+        Optional<List<BookDto>> booksOptional = bookService.findByAuthor("Mr. Shola");
         assertTrue(booksOptional.isPresent());
         List<BookDto> bookDtos = booksOptional.get();
         assertEquals(2, bookDtos.size());
@@ -40,8 +40,8 @@ public class LibraryServiceImplTest {
 
     @Test
     public void shouldUpdateAndSaveLentBook(){
-        LibraryService libraryService = new LibraryServiceImpl(bookRepository);
-        libraryService.lendBook("ade@gmail.com", "12345");
+        BookService bookService = new BookServiceImpl(bookRepository);
+        bookService.lendBook("ade@gmail.com", "12345");
         verify(lentBook).setLent(true);
         verify(lentBook).setLendeeEmail("ade@gmail.com");
         verify(bookRepository).save(lentBook);
